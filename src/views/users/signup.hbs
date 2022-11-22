@@ -1,19 +1,30 @@
 <div class="row">
-    <div class="col-md-4">
+
+    <div class="col-md-4 mx-auto">
         <div class="card">
             <div class="card-header">
-                Account Register
+                <h3>Account Register</h3>
             </div>
-            <div clas="card-body">
-                <form action="">
+            <div class="card-body">
+                <form action="/users/signup" method="post">
                     <div class="mb-3">
-                        <input type="text" name="name" class="form-control" placeholder="Name">
+                        <input type="text" name="name" class="form-control" placeholder="Name" value="{{name}}">
                     </div>
                     <div class="mb-3">
-                        <input type="text" name="email" class="form-control" placeholder="Email">
+                        <input type="email" name="email" class="form-control" placeholder="Email" value="{{email}}">
                     </div>
                     <div class="mb-3">
-                        <input type="text" name="password" class="form-control" placeholder="Password">
+                        <input type="password" name="password" class="form-control" placeholder="Password">
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" name="confirm_password" class="form-control" placeholder="Password">
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary" type="submit">
+                                SignUp
+                            </button>
+                        </div>
                     </div>
                 </form>
             </div>
