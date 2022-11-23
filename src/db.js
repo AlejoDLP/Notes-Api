@@ -1,7 +1,8 @@
 const mongoose = require('mongoose')
+const { MONGO_URL } = require('./config/config')
 
 mongoose
-    .connect('mongodb://127.0.0.1/notes-db-app', {
+    .connect(MONGO_URL, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     })

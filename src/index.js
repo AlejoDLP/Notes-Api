@@ -9,6 +9,7 @@ const cors = require('cors')
 const passport = require('passport')
 const cookieParser = require('cookie-parser')
 const MongoStore = require('connect-mongo')
+const { MONGO_URL, PORT } = require('./config/config')
 
 // Inits
 const app = express()
@@ -16,7 +17,7 @@ require('./db')
 require('./config/passport')
 
 // Settings
-app.set('port', process.env.PORT || 3000)
+app.set('port', PORT)
 app.engine(
     '.hbs',
     exphbs.engine({
@@ -43,7 +44,7 @@ app.use(
     session({
         secret: 'mysecretapp',
         store: MongoStore.create({
-            mongoUrl: 'mongodb://127.0.0.1/notes-db-app'
+            mongoUrl: MONGO_URL
         }),
         resave: true,
         saveUninitialized: true
