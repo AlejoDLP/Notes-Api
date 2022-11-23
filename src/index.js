@@ -7,6 +7,8 @@ const session = require('express-session')
 const flash = require('connect-flash')
 const cors = require('cors')
 const passport = require('passport')
+const cookieParser = require('cookie-parser')
+const MongoStore = require('connect-mongo')
 
 // Inits
 const app = express()
@@ -33,11 +35,16 @@ app.set('view engine', '.hbs')
 
 // Middlewares
 app.use(express.urlencoded({ extended: false }))
+app.use(cookieParser())
 app.use(morgan('dev'))
 app.use(methodOverride('_method'))
+app.use
 app.use(
     session({
         secret: 'mysecretapp',
+        store: MongoStore.create({
+            mongoUrl: 'mongodb://127.0.0.1/notes-db-app'
+        }),
         resave: true,
         saveUninitialized: true
     })
@@ -52,6 +59,7 @@ app.use((req, res, next) => {
     res.locals.success_msg = req.flash('success_msg')
     res.locals.error_msg = req.flash('error_msg')
     res.locals.error = req.flash('error')
+    res.locals.user = req.user || null
     next()
 })
 

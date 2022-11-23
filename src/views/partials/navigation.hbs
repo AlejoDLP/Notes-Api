@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
         <a class="navbar-brand" href="/">Notes App</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -14,7 +14,8 @@
                     <a class="nav-link" href="/about">About</a>
                 </li>
             </ul>
-            <ul class="navbar-nav ms-auto me-1">
+            <ul class="navbar-nav ms-auto">
+                {{#if user}}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
@@ -29,6 +30,15 @@
                         <li><a class="dropdown-item" href="/users/logout">Logout</a></li>
                     </ul>
                 </li>
+                {{else}}
+                <li class="nav-item">
+                    <a class="nav-link active" href="/users/signin">SignIn</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/users/signup">SignUp</a>
+                </li>
+                {{/if}}
+
             </ul>
         </div>
     </div>

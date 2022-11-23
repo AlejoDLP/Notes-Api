@@ -75,4 +75,10 @@ router.post(
     }
 )
 
+router.get('/users/logout', (req, res, next) => {
+    req.logOut((err) => {
+        if (err) return next(err)
+        res.redirect('/')
+    })
+})
 module.exports = router
